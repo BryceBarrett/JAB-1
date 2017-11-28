@@ -75,12 +75,12 @@ class Clipboard(GObject.GObject):
             object_id = self._get_next_object_id()
         else:
             object_id = data_hash
-         ##The following 5 lines have been commented out as an intentional fault injection
-         #if object_id in self._objects:
-          #  logging.debug('Clipboard.add_object: object already in clipboard,'
-            #              ' selecting previous entry instead')
-           # self.emit('object-selected', object_id)
-           # return None
+        ##The following 5 lines have been commented out as an intentional fault injection
+        if object_id in self._objects:
+            logging.debug('Clipboard.add_object: object already in clipboard,'
+                          ' selecting previous entry instead')
+            self.emit('object-selected', object_id)
+            return None
         self._objects[object_id] = ClipboardObject(object_id, name)
         self.emit('object-added', self._objects[object_id])
         return object_id
