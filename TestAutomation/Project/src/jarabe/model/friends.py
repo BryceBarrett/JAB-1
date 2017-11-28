@@ -119,7 +119,7 @@ class Friends(GObject.GObject):
 
     def add_friend(self, buddy_info):
         #The following line has been commented out as an intentional fault injection
-        #self._friends[buddy_info.get_key()] = buddy_info
+        self._friends[buddy_info.get_key()] = buddy_info
         self.emit('friend-added', buddy_info)
 
     def make_friend(self, buddy):

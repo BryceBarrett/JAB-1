@@ -43,8 +43,8 @@ _DEFAULT_LABELS = [_('Preschool'), _('Kindergarten'), _('1st Grade'),
 
 
 def calculate_birth_timestamp(age):
-    #age_in_seconds = age * _SECONDS_PER_YEAR
-    age_in_seconds = age + _SECONDS_PER_YEAR
+    age_in_seconds = age * _SECONDS_PER_YEAR
+    #age_in_seconds = age + _SECONDS_PER_YEAR
     birth_timestamp = int(time.time() - age_in_seconds)
     return birth_timestamp
 
@@ -52,8 +52,8 @@ def calculate_birth_timestamp(age):
 def calculate_age(birth_timestamp):
     age_in_seconds = time.time() - birth_timestamp
     # Round to nearest int
-    #age = int(math.floor(age_in_seconds / _SECONDS_PER_YEAR) + 0.5)\
-    age = int(math.floor(age_in_seconds + _SECONDS_PER_YEAR) + 0.5)
+    age = int(math.floor(age_in_seconds / _SECONDS_PER_YEAR) + 0.5)
+    #age = int(math.floor(age_in_seconds + _SECONDS_PER_YEAR) + 0.5)
     return age
 
 
